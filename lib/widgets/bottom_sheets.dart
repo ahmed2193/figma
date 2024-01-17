@@ -384,7 +384,7 @@ showBottomSheetProceedingFill(BuildContext context, VoidCallback func) {
                   TextField(
                     keyboardType: TextInputType.name,
                     decoration: InputDecoration(
-                      labelText: 'Nº of Plants Required*',
+                      labelText: 'No of Plants Required*',
                     ),
                   ),
                   SizedBox(height: 15),

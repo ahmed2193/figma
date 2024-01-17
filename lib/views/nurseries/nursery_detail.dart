@@ -97,7 +97,9 @@ class _NurseryDetailState extends State<NurseryDetail> {
           onPressed: () {
             showBottomSheetCategoryNursery(context);
           }),
-      body: CustomScrollView(
+      body:
+      
+  CustomScrollView(
         slivers: [
           SliverToBoxAdapter(
             child: Padding(
@@ -106,147 +108,170 @@ class _NurseryDetailState extends State<NurseryDetail> {
                 child: Column(
                   children: [
                     Container(
-                        padding: const EdgeInsets.only(
-                            top: 16, left: 15, right: 11, bottom: 22),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: Flexible(
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              const Flexible(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
+                      padding: const EdgeInsets.only(
+                        top: 16,
+                        left: 15,
+                        right: 11,
+                        bottom: 22,
+                      ),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Flexible(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                TextLato(
+                                  'Nursery 1',
+                                  fontSize: 24,
+                                  fontWeight: FontWeight.w900,
+                                  color: Colors.black,
+                                ),
+                                SizedBox(height: 20),
+                                TextLato(
+                                  'Flower, Ceramic, Vegetable, Vegetable',
+                                  color: Color(0xff5E0000),
+                                  textOverflow: TextOverflow.ellipsis,
+                                  fontSize: 18,
+                                ),
+                                SizedBox(height: 5),
+                                TextLato(
+                                  'Balongi, Mohali',
+                                  fontSize: 16,
+                                  color: Color(0xff7E818B),
+                                ),
+                                SizedBox(height: 8),
+                                Row(
                                   children: [
-                                    TextLato('Nursery 1',
-                                        fontSize: 24,
-                                        fontWeight: FontWeight.w900,
-                                        color: Colors.black),
-                                    SizedBox(height: 20),
+                                    Icon(Icons.watch_later_outlined, size: 16),
+                                    SizedBox(width: 4),
                                     TextLato(
-                                        'Flower, Ceramic, Vegetable, Vegetable',
-                                        color: Color(0xff5E0000),
-                                        textOverflow: TextOverflow.ellipsis,
-                                        fontSize: 18),
-                                    SizedBox(height: 5),
-                                    TextLato('Balongi, Mohali',
-                                        fontSize: 16, color: Color(0xff7E818B)),
-                                    SizedBox(height: 8),
-                                    Row(
-                                      children: [
-                                        Icon(Icons.watch_later_outlined,
-                                            size: 16),
-                                        SizedBox(width: 4),
-                                        TextLato('20 mints',
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.bold),
-                                        Padding(
-                                          padding: EdgeInsets.symmetric(
-                                              horizontal: 8),
-                                          child: TextLato('|',
-                                              color: Colors.black),
-                                        ),
-                                        Icon(Icons.location_on_outlined,
-                                            size: 16),
-                                        SizedBox(width: 4),
-                                        Flexible(
-                                          child: TextLato('3 km',
-                                              color: Colors.black,
-                                              fontWeight: FontWeight.bold),
-                                        )
-                                      ],
+                                      '20 mints',
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsets.symmetric(
+                                        horizontal: 8,
+                                      ),
+                                      child: TextLato('|', color: Colors.black),
+                                    ),
+                                    Icon(Icons.location_on_outlined, size: 16),
+                                    SizedBox(width: 4),
+                                    Flexible(
+                                      child: TextLato(
+                                        '3 km',
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.bold,
+                                      ),
                                     )
                                   ],
+                                )
+                              ],
+                            ),
+                          ),
+                          SizedBox(
+                            width: MediaQuery.of(context).size.width * 0.2,
+                          ),
+                          InkWell(
+                            onTap: () {
+                              context.push(Routes.reviews);
+                            },
+                            child: Container(
+                              clipBehavior: Clip.antiAliasWithSaveLayer,
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(15),
+                                border: Border.all(
+                                  color: const Color(0xffE5E4E9),
+                                  width: 1,
                                 ),
                               ),
-                              SizedBox(
-                                  width:
-                                      MediaQuery.sizeOf(context).width * 0.2),
-                              InkWell(
-                                      onTap: (){
-                                        context.push(Routes.reviews);
-                                      },
-                                child: Container(
-                                  clipBehavior: Clip.antiAliasWithSaveLayer,
-                                  decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.circular(15),
-                                      border: Border.all(
-                                          color: const Color(0xffE5E4E9),
-                                          width: 1)),
-                                  child: Column(
-                                    children: [
-                                      Container(
-                                        padding: const EdgeInsets.symmetric(
-                                            vertical: 8, horizontal: 13),
-                                        color: const Color(0xff129312),
-                                        child: const Row(
-                                          children: [
-                                            TextLato(
-                                              '4.5',
-                                              color: Colors.white,
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.w900,
-                                            ),
-                                            Icon(Icons.star,
-                                                color: Colors.white, size: 20)
-                                          ],
+                              child: Column(
+                                children: [
+                                  Container(
+                                    padding: const EdgeInsets.symmetric(
+                                      vertical: 8,
+                                      horizontal: 13,
+                                    ),
+                                    color: const Color(0xff129312),
+                                    child: const Row(
+                                      children: [
+                                        TextLato(
+                                          '4.5',
+                                          color: Colors.white,
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w900,
                                         ),
-                                      ),
-                                
-                                
-                                      Padding(
-                                        padding:
-                                            EdgeInsets.only(top: 2, bottom: 5),
-                                        child: Column(
-                                          children: [
-                                            TextLato(
-                                              '2111',
-                                              color: Colors.black,
-                                              fontSize: 12,
-                                              fontWeight: FontWeight.w600,
-                                            ),
-                                            TextLato(
-                                              'Reviews',
-                                              color: Color(0xff7E818B),
-                                              fontSize: 10,
-                                              fontWeight: FontWeight.w600,
-                                            ),
-                                          ],
-                                        ),
-                                      )
-                                    ],
+                                        Icon(
+                                          Icons.star,
+                                          color: Colors.white,
+                                          size: 20,
+                                        )
+                                      ],
+                                    ),
                                   ),
-                                ),
-                              )
-                            ],
-                          ),
-                        )),
-               const     SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: Row(children: [
-                          const ContainerDiscounts(),
+                                  Padding(
+                                    padding: EdgeInsets.only(
+                                      top: 2,
+                                      bottom: 5,
+                                    ),
+                                    child: Column(
+                                      children: [
+                                        TextLato(
+                                          '2111',
+                                          color: Colors.black,
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                        TextLato(
+                                          'Reviews',
+                                          color: Color(0xff7E818B),
+                                          fontSize: 10,
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                      ],
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                    SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: [
+                          ContainerDiscounts(),
                           SizedBox(
                             width: 30,
                           ),
-                          const ContainerDiscounts(),
-                        ])),
-                    const SizedBox(height: 20),
+                          ContainerDiscounts(),
+                        ],
+                      ),
+                    ),
+                    SizedBox(height: 20),
                     SizedBox(
                       height: 42.5,
                       child: ListView.separated(
-                          shrinkWrap: true,
-                          scrollDirection: Axis.horizontal,
-                          itemBuilder: (context, index) => ContainerDropwDown(
-                              DropwDownModel.listDropDown[index]),
-                          separatorBuilder: (context, index) =>
-                              const SizedBox(width: 10),
-                          itemCount: DropwDownModel.listDropDown.length),
+                        shrinkWrap: true,
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (context, index) => ContainerDropwDown(
+                          DropwDownModel.listDropDown[index],
+                        ),
+                        separatorBuilder: (context, index) =>
+                            const SizedBox(width: 10),
+                        itemCount: DropwDownModel.listDropDown.length,
+                      ),
                     ),
-                    const SizedBox(height: 25)
+                    const SizedBox(height: 25),
                   ],
                 ),
               ),
@@ -254,52 +279,61 @@ class _NurseryDetailState extends State<NurseryDetail> {
           ),
 
           SliverToBoxAdapter(
-              child: Container(
-                  padding: const EdgeInsets.symmetric(vertical: 16),
-                  height: MediaQuery.of(context).size.width * 2,
-                  color: Colors.white,
-                  child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 18),
-                      child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                const TextLato("Recommended (30)",
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.black),
-                                Image.asset('assets/ic-upward.png',
-                                    width: 20, height: 20)
-                              ],
-                            ),
-                            const SizedBox(height: 16),
-                            Expanded(
-                              child: ListView.separated(
-                                  padding: EdgeInsets.zero,
-                                  physics: const NeverScrollableScrollPhysics(),
-                                  shrinkWrap: true,
-                                  itemBuilder: (context, index) => InkWell(
-                                      onTap: () {},
-                                      child: ContainerNurseryItem(
-                                          data: NurseryModel(),
-                                          onDetailPressed: () {},
-                                          onAddPressed: () {
-                                            showBottomSheetAddNursery(context);
-                                          })),
-                                  separatorBuilder: (context, index) =>
-                                      const Padding(
-                                        padding:
-                                            EdgeInsets.symmetric(vertical: 4),
-                                        child: DottedDivider(),
-                                      ),
-                                  itemCount: 3),
-                            )
-                          ]))))
+            child: Container(
+              padding: const EdgeInsets.symmetric(vertical: 16),
+              height: MediaQuery.of(context).size.width * 2,
+              color: Colors.white,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 18),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const TextLato(
+                          "Recommended (30)",
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
+                        ),
+                        Image.asset('assets/ic-upward.png',
+                            width: 20, height: 20)
+                      ],
+                    ),
+                    const SizedBox(height: 16),
+                    Expanded(
+                      child: ListView.separated(
+                        padding: EdgeInsets.zero,
+                        physics: const NeverScrollableScrollPhysics(),
+                        shrinkWrap: true,
+                        itemBuilder: (context, index) => InkWell(
+                          onTap: () {},
+                          child: ContainerNurseryItem(
+                            data: NurseryModel(),
+                            onDetailPressed: () {},
+                            onAddPressed: () {
+                              showBottomSheetAddNursery(context);
+                            },
+                          ),
+                        ),
+                        separatorBuilder: (context, index) => const Padding(
+                          padding: EdgeInsets.symmetric(vertical: 4),
+                          child: DottedDivider(),
+                        ),
+                        itemCount: 3,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
           // Add other SliverList, SliverGrid, etc., widgets as needed
         ],
       ),
+    
+   
     );
   }
 }

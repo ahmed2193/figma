@@ -312,62 +312,60 @@ class SearchTemplate extends StatelessWidget {
           borderRadius: BorderRadius.circular(8),
           // color: backgroundColor ?? const Color(0xffE3E7E6),
         ),
-        child: Expanded(
-          child: TextField(
-            enabled: false,
-            style: GoogleFonts.lato(textStyle: const TextStyle(fontSize: 16)),
-            decoration: InputDecoration(
-              border: 
-            OutlineInputBorder(
-              borderRadius: BorderRadius.circular(
-                20,
-              ),
-              borderSide: const BorderSide(
-                color: Color(0xffE3E7E6),
-              ),
+        child: TextField(
+          enabled: false,
+          style: GoogleFonts.lato(textStyle: const TextStyle(fontSize: 16)),
+          decoration: InputDecoration(
+            border: 
+          OutlineInputBorder(
+            borderRadius: BorderRadius.circular(
+              20,
             ),
-            enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(
-                20,
-              ),
-              borderSide: BorderSide(
-                color: Color(0xffE3E7E6),
-              ),
+            borderSide: const BorderSide(
+              color: Color(0xffE3E7E6),
             ),
-            focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(
-                20,
-              ),
-              borderSide: const BorderSide(
-                color: Color(0xffE3E7E6),
-              ),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(
+              20,
             ),
-              // filled: true,
-              prefixIcon:
-                  const Icon(Icons.search, size: 26, color: Color(0xff109D10)),
-              suffixIcon: suffixIcon ??
-                  SizedBox(
-                    width: 0,
-                    child: Row(
-                      children: [
-                        Container(
-                          width: 1,
-                          height: 26,
-                          color: const Color(0xffCBCBCB),
-                        ),
-                        const SizedBox(width: 4),
-                        const Icon(Icons.mic,
-                            size: 26, color: Color(0xff109D10))
-                      ],
-                    ),
+            borderSide: BorderSide(
+              color: Color(0xffE3E7E6),
+            ),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(
+              20,
+            ),
+            borderSide: const BorderSide(
+              color: Color(0xffE3E7E6),
+            ),
+          ),
+            // filled: true,
+            prefixIcon:
+                const Icon(Icons.search, size: 26, color: Color(0xff109D10)),
+            suffixIcon: suffixIcon ??
+                SizedBox(
+                  width: 0,
+                  child: Row(
+                    children: [
+                      Container(
+                        width: 1,
+                        height: 26,
+                        color: const Color(0xffCBCBCB),
+                      ),
+                      const SizedBox(width: 4),
+                      const Icon(Icons.mic,
+                          size: 26, color: Color(0xff109D10))
+                    ],
                   ),
-              suffixIconConstraints: const BoxConstraints(minWidth: 40),
-              hintText: label,
-              hintStyle: TextStyle(fontSize: 16 , color: Colors.grey),
-              contentPadding:
-                  const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-              // border: const OutlineInputBorder(borderSide: BorderSide.none),
-            ),
+                ),
+            suffixIconConstraints: const BoxConstraints(minWidth: 40),
+            hintText: label,
+            hintStyle: TextStyle(fontSize: 16 , color: Colors.grey),
+            contentPadding:
+                const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+            // border: const OutlineInputBorder(borderSide: BorderSide.none),
           ),
         ),
       ),
