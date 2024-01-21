@@ -230,26 +230,27 @@ showBottomSheetAddNursery(BuildContext context) {
                         ),
                       )),
                       const SizedBox(width: 24),
-                      InkWell(
-                        onTap: () {
-                          Navigator.pop(context);
-                        },
-                        child: Expanded(
-                            child: Container(
-                          padding: const EdgeInsets.symmetric(
-                              vertical: 10, horizontal: 15),
-                          decoration: BoxDecoration(
-                              color: const Color(0xff109D10),
-                              borderRadius: BorderRadius.circular(10),
-                              border:
-                                  Border.all(color: const Color(0xffE8E8F1))),
-                          child: const Center(
-                            child: TextLato('Add item 14.0',
-                                color: Colors.white,
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        )),
+                      Expanded(
+                        child: InkWell(
+                          onTap: () {
+                            Navigator.pop(context);
+                          },
+                          child: Container(
+                                                      padding: const EdgeInsets.symmetric(
+                            vertical: 10, horizontal: 15),
+                                                      decoration: BoxDecoration(
+                            color: const Color(0xff109D10),
+                            borderRadius: BorderRadius.circular(10),
+                            border:
+                                Border.all(color: const Color(0xffE8E8F1))),
+                                                      child: const Center(
+                          child: TextLato('Add item 14.0',
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold),
+                                                      ),
+                                                    ),
+                        ),
                       )
                     ],
                   ),

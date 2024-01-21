@@ -1,4 +1,5 @@
 import 'package:figma/controllers/profile/profile_bloc.dart';
+import 'package:figma/routers/route.dart';
 import 'package:figma/views/orders/order_view.dart';
 import 'package:figma/widgets/menus.dart';
 import 'package:figma/widgets/texts.dart';
@@ -101,58 +102,69 @@ class _ProfileState extends State<Profile> {
                       );
                     },
                   ),
-
-                  Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 16, vertical: 10),
-                      child: Container(
-                          padding: const EdgeInsets.all(19.0),
-                          decoration: BoxDecoration(
-                              borderRadius:
-                                  const BorderRadius.all(Radius.circular(15)),
-                              color: Colors.white,
-                              boxShadow: [
-                                BoxShadow(
-                                    color: Colors.black.withOpacity(0.15),
-                                    blurRadius: 10,
-                                    spreadRadius: 1.5),
-                              ]),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Center(child: Image.asset('assets/greenstar.png')),
-                              const SizedBox(width: 11),
-                              Expanded(child:
-                              TextLato('Green Star Rating',
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 16,
-                                  color: Colors.black),),
-
-                              Container(
-                                width: MediaQuery.of(context).size.width * 0.15,
-                                height: MediaQuery.of(context).size.width * 0.05,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(2),
-                                  color: const Color(0xffE3E7E6),
+                  InkWell(
+                    onTap: () {
+                      context.push(Routes.reviews);
+                    },
+                    child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 16, vertical: 10),
+                        child: Container(
+                            padding: const EdgeInsets.all(19.0),
+                            decoration: BoxDecoration(
+                                borderRadius:
+                                    const BorderRadius.all(Radius.circular(15)),
+                                color: Colors.white,
+                                boxShadow: [
+                                  BoxShadow(
+                                      color: Colors.black.withOpacity(0.15),
+                                      blurRadius: 10,
+                                      spreadRadius: 1.5),
+                                ]),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Center(
+                                    child: Image.asset('assets/greenstar.png')),
+                                const SizedBox(width: 11),
+                                Expanded(
+                                  child: TextLato('Green Star Rating',
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 16,
+                                      color: Colors.black),
                                 ),
-                                child: const Center(
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Text(
-                                        '4.5',
-                                        style: TextStyle(
-                                            color: Colors.black, fontSize: 12.0),
-                                      ),  const SizedBox(width: 4),
-                                      Icon(Icons.star, color: Colors.amber, size: 16),
-                                    ],
+                                Container(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.15,
+                                  height:
+                                      MediaQuery.of(context).size.width * 0.05,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(2),
+                                    color: const Color(0xffE3E7E6),
+                                  ),
+                                  child: const Center(
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          '4.5',
+                                          style: TextStyle(
+                                              color: Colors.black,
+                                              fontSize: 12.0),
+                                        ),
+                                        const SizedBox(width: 4),
+                                        Icon(Icons.star,
+                                            color: Colors.amber, size: 16),
+                                      ],
+                                    ),
                                   ),
                                 ),
-                              ),
-                              const SizedBox(width: 11),
-                              const Icon(Icons.arrow_forward_ios, size: 14)
-                            ],
-                          ))),
+                                const SizedBox(width: 11),
+                                const Icon(Icons.arrow_forward_ios, size: 14)
+                              ],
+                            ))),
+                  ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16),
                     child: Container(
@@ -210,13 +222,18 @@ class _ProfileState extends State<Profile> {
                                 ),
                               ),
                               const SizedBox(height: 20),
-                               Padding(
+                              Padding(
                                   padding: EdgeInsets.symmetric(horizontal: 16),
                                   child: MyProfileMenus(
-                                      'order-support', 'Order Support', onPressed: (){
-                                    showPopup('Order Support', 'You can get help via the contact number, or through the whatsapp.',context);
-                                  }
-                              ,)),
+                                    'order-support',
+                                    'Order Support',
+                                    onPressed: () {
+                                      showPopup(
+                                          'Order Support',
+                                          'You can get help via the contact number, or through the whatsapp.',
+                                          context);
+                                    },
+                                  )),
                               const SizedBox(height: 20),
                               BlocBuilder<ProfileBloc, ProfileState>(
                                 builder: (context, state) {
@@ -305,12 +322,17 @@ class _ProfileState extends State<Profile> {
                                 },
                               ),
                               const SizedBox(height: 20),
-                               Padding(
-                                  padding: EdgeInsets.symmetric(horizontal: 16),
-                                  child: MyProfileMenus(
-                                      'feedbacks', 'Send Feedbacks', onPressed: (){
-                                showPopup('Share Feedback', 'You can share your valuable feedback with us and share your experience',context);
-                              } ),),
+                              Padding(
+                                padding: EdgeInsets.symmetric(horizontal: 16),
+                                child: MyProfileMenus(
+                                    'feedbacks', 'Send Feedbacks',
+                                    onPressed: () {
+                                  showPopup(
+                                      'Share Feedback',
+                                      'You can share your valuable feedback with us and share your experience',
+                                      context);
+                                }),
+                              ),
                               const SizedBox(height: 20),
                               BlocBuilder<ProfileBloc, ProfileState>(
                                 builder: (context, state) {
@@ -345,62 +367,60 @@ class _ProfileState extends State<Profile> {
     );
   }
 
-  Future<void> showPopup(String title, String desc, BuildContext context) async {
+  Future<void> showPopup(
+      String title, String desc, BuildContext context) async {
     await showDialog(
-
       context: context,
       barrierDismissible: true,
-
-      builder: (ctx) =>
-
-
-          AlertDialog(
-
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(Radius.circular(15.0))),
-            contentPadding: EdgeInsets.all(20.0),
+      builder: (ctx) => AlertDialog(
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(15.0))),
+        contentPadding: EdgeInsets.all(20.0),
         backgroundColor: Colors.white,
-        content:     Container(
-
-
-          child:
-          IntrinsicHeight(child:
-          Column(
+        content: Container(
+          child: IntrinsicHeight(
+              child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               TextLato(title,
                   fontWeight: FontWeight.bold,
                   fontSize: 24,
                   color: Colors.black),
-              SizedBox(height: 10,),
+              SizedBox(
+                height: 10,
+              ),
               TextLato(desc,
                   fontWeight: FontWeight.bold,
                   fontSize: 14,
-                  color: Colors.black),    SizedBox(height: 20,),
-              const     Row(
+                  color: Colors.black),
+              SizedBox(
+                height: 20,
+              ),
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  TextLato('+91  999999999',
+                  TextLato(
+                    '+91  999999999',
                     fontWeight: FontWeight.bold,
                     fontSize: 12,
-                    color: Color(0xFF109D10),),
-
-                  Flexible(child:
-                  TextLato('Whatsapp',
-                    fontWeight: FontWeight.bold,
-                    fontSize: 12,
-                    color: Color(0xFF109D10),),)
+                    color: Color(0xFF109D10),
+                  ),
+                  Flexible(
+                    child: TextLato(
+                      'Whatsapp',
+                      fontWeight: FontWeight.bold,
+                      fontSize: 12,
+                      color: Color(0xFF109D10),
+                    ),
+                  )
                 ],
               ),
-
             ],
-          )
-          ),
+          )),
         ),
-      ),)
-    ;
+      ),
+    );
   }
-
 }
 
 class order extends StatelessWidget {

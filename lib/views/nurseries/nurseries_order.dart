@@ -13,15 +13,13 @@ class NurseriesOrder extends StatelessWidget {
       child: ListView(padding: EdgeInsets.zero, children: [
         const SearchBarTemplate('Search for nursery or a plant'),
         const SizedBox(height: 18),
-        Expanded(
-          child: ListView.separated(
-              padding: EdgeInsets.zero,
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              itemBuilder: (context, index) => const ContainerNurseryOrder(),
-              separatorBuilder: (context, index) => const SizedBox(height: 20),
-              itemCount: 10),
-        ),
+        ListView.separated(
+            padding: EdgeInsets.zero,
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            itemBuilder: (context, index) => const ContainerNurseryOrder(),
+            separatorBuilder: (context, index) => const SizedBox(height: 20),
+            itemCount: 10),
 
       ]),
     );

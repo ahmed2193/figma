@@ -22,19 +22,20 @@ class BottomNavWidget extends StatelessWidget {
         ));
   }
 }
-
 class MyProfileMenus extends StatelessWidget {
   final String icons;
   final String label;
   final Function()? onPressed;
-  const MyProfileMenus(this.icons, this.label, {this.onPressed, super.key});
+
+  const MyProfileMenus(this.icons, this.label, {this.onPressed, Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: onPressed,
       child: SizedBox(
-        width: MediaQuery.sizeOf(context).width * 0.82,
+        width: MediaQuery.of(context).size.width * 0.82,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -51,15 +52,16 @@ class MyProfileMenus extends StatelessWidget {
                   child: Center(child: Image.asset('assets/ic-$icons.png')),
                 ),
                 const SizedBox(width: 11),
-
-                TextLato(label,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16,
-                    color: Colors.black)
+                TextLato(
+                  label,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16,
+                  color: Colors.black,
+                ),
               ],
             ),
-            Flexible(child:
-            const Icon(Icons.arrow_forward_ios, size: 14))
+            // Wrap the Icon with Flexible or Expanded
+            Icon(Icons.arrow_forward_ios, size: 14),
           ],
         ),
       ),

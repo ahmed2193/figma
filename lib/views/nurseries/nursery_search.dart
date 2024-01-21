@@ -55,23 +55,21 @@ class NurserySearch extends StatelessWidget {
                           fontSize: 16)))
             ])),
             const SizedBox(height: 20),
-            Expanded(
-              child: ListView.separated(
-                  padding: EdgeInsets.zero,
-                  physics: const NeverScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  itemBuilder: (context, index) => InkWell(
-                      onTap: () {},
-                      child: ContainerNurseryItem(
-                          data: NurseryModel(
-                              title: 'Hibiscus Flower', isSaved: false),
-                          onDetailPressed: () {})),
-                  separatorBuilder: (context, index) => const Padding(
-                        padding: EdgeInsets.symmetric(vertical: 4),
-                        child: DottedDivider(),
-                      ),
-                  itemCount: 3),
-            ),
+            ListView.separated(
+                padding: EdgeInsets.zero,
+                physics: const NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                itemBuilder: (context, index) => InkWell(
+                    onTap: () {},
+                    child: ContainerNurseryItem(
+                        data: NurseryModel(
+                            title: 'Hibiscus Flower', isSaved: false),
+                        onDetailPressed: () {})),
+                separatorBuilder: (context, index) => const Padding(
+                      padding: EdgeInsets.symmetric(vertical: 4),
+                      child: DottedDivider(),
+                    ),
+                itemCount: 3),
             const SizedBox(height: 25),
             InkWell(
                 onTap: () {
