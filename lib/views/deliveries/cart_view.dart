@@ -1,4 +1,6 @@
+import 'package:figma/core/utils/size_utils.dart';
 import 'package:figma/routers/route.dart';
+import 'package:figma/theme/theme_helper.dart';
 import 'package:figma/views/locations/location_view.dart';
 import 'package:figma/widgets/containers.dart';
 import 'package:figma/widgets/dividers.dart';
@@ -25,118 +27,143 @@ class _CartState extends State<Cart> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        bottomNavigationBar: Container(
-          padding: EdgeInsets.only(bottom: 60),
-            height: 170,
-            color: Colors.white,
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                const Expanded(
-                  child: Padding(
-                    padding: EdgeInsets.only(left: 10),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        TextLato(
-                          'PAY USING',
-                          fontSize: 12,
-                          fontWeight: FontWeight.w500,
-                          color: Colors.grey,
-                        ),
-                        TextLato(
-                          'Personal',
-                          fontSize: 14,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black,
-                        ),
-                        Row(
+        bottomNavigationBar: Stack(
+          children: [
+            Container(
+                padding: EdgeInsets.only(bottom: 60),
+                height: 170,
+                color: Colors.white,
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    const Expanded(
+                      child: Padding(
+                        padding: EdgeInsets.only(left: 4),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             TextLato(
-                              '**** 3409 | ',
-                              fontSize: 14,
-                              fontWeight: FontWeight.bold,
+                              'PAY USING',
+                              fontSize: 12,
+                              fontWeight: FontWeight.w500,
                               color: Colors.grey,
                             ),
-                            Flexible(child:
                             TextLato(
-                              'Secured',
-                              fontSize: 12,
+                              'Personal',
+                              fontSize: 14,
                               fontWeight: FontWeight.bold,
-                              color: Color(0xff109D10),
+                              color: Colors.black,
                             ),
+                            Row(
+                              children: [
+                                TextLato(
+                                  '**** 3409 | ',
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.grey,
+                                ),
+                                Flexible(
+                                  child: TextLato(
+                                    'Secured',
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.bold,
+                                    color: Color(0xff109D10),
+                                  ),
+                                ),
+                              ],
                             ),
                           ],
                         ),
-                      ],
+                      ),
                     ),
-                  ),
-                ),
-                Container(
-                  padding: EdgeInsets.only(right: 10),
-                  height: 80,
-               //   width: MediaQuery.of(context).size.width / 1.5,
-                  child: Row(       crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      FilledButton(
-                          onPressed: () {},
-                          style: ButtonStyle(
-                              shape: MaterialStateProperty.all<
-                                      RoundedRectangleBorder>(
-                                  RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10))),
-                              backgroundColor:
-                                  MaterialStateProperty.all(Colors.redAccent)),
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              const Padding(
-                                padding: EdgeInsets.only(top: 8),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    TextLato(
-                                      '14.00',
-                                      textAlign: TextAlign.center,
-                                      color: Colors.white,
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.bold,
+                    Container(
+                      padding: EdgeInsets.only(right: 10),
+                      height: 80,
+                      //   width: MediaQuery.of(context).size.width / 1.5,
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          FilledButton(
+                              onPressed: () {
+                                context.push(Routes.ordertrackingPage);
+                              },
+                              style: ButtonStyle(
+                                  shape: MaterialStateProperty.all<
+                                          RoundedRectangleBorder>(
+                                      RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(10))),
+                                  backgroundColor: MaterialStateProperty.all(
+                                      theme.primaryColor)),
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  const Padding(
+                                    padding: EdgeInsets.only(top: 8),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        TextLato(
+                                          '14.00',
+                                          textAlign: TextAlign.center,
+                                          color: Colors.white,
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                        TextLato(
+                                          'TOTAL',
+                                          textAlign: TextAlign.center,
+                                          color: Colors.white,
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.normal,
+                                        ),
+                                      ],
                                     ),
-                                    TextLato(
-                                      'TOTAL',
-                                      textAlign: TextAlign.center,
-                                      color: Colors.white,
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.normal,
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              SizedBox(
-                                width: 20,
-                              ),
-                              Text('Place Order',
-                                  style: GoogleFonts.lato(
-                                    textStyle: Theme.of(context)
-                                        .textTheme
-                                        .headlineMedium!
-                                        .copyWith(fontSize: 14),
+                                  ),
+                                  SizedBox(
+                                    width: 20,
+                                  ),
+                                  Text('Place Order',
+                                      style: GoogleFonts.lato(
+                                        textStyle: Theme.of(context)
+                                            .textTheme
+                                            .headlineMedium!
+                                            .copyWith(fontSize: 14),
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold,
+                                      )),
+                                  Icon(
+                                    Icons.arrow_right,
                                     color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                  )),
-                              Icon(Icons.arrow_right, color: Colors.white,)
-                            ],
-                          ))
-                    ],
-                  ),
-                )
-              ],
-            )),
+                                  )
+                                ],
+                              ))
+                        ],
+                      ),
+                    )
+                  ],
+                )),
+            Positioned(
+              top: 4,
+              left: 0,
+              right: 120.v,
+              child: InkWell(
+                onTap: () {
+                  context.push(Routes.paymentMethodScreen);
+                },
+                child: const Icon(Icons.keyboard_arrow_up,
+                    color: Color(0xff109D10), size: 40),
+              ),
+            )
+          ],
+        ),
         body: CustomScrollView(slivers: [
           SliverAppBar(
             backgroundColor: const Color(0xffF0F0FC),
@@ -208,7 +235,6 @@ class _CartState extends State<Cart> {
                         ],
                       ),
                     ),
-                   
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 16),
                       child: Text(
@@ -220,7 +246,6 @@ class _CartState extends State<Cart> {
                             decoration: TextDecoration.none),
                       ),
                     ),
-                
                     Container(
                       padding: const EdgeInsets.symmetric(
                           horizontal: 16, vertical: 12),

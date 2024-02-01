@@ -11,6 +11,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../controllers/bottom_nav/bottom_nav_bloc.dart';
 import '../nurseries/nurseries.dart';
 
 class HomePage extends StatelessWidget {
@@ -159,15 +160,11 @@ class HomePage extends StatelessWidget {
                         const TextLato('What\'s new?',
                             fontSize: 18, fontWeight: FontWeight.bold),
                         const SizedBox(height: 18),
-                      
-                       SizedBox(
+                        SizedBox(
                           // width: MediaQuery.sizeOf(context).width,
                           // height: 155,
-                         child: ReusedCarouselWithIndicator(
-                                ),
-                       ),
-                      
-                   
+                          child: ReusedCarouselWithIndicator(),
+                        ),
                         const SizedBox(height: 12),
                         const TextLato('What to plant today?',
                             fontSize: 18, fontWeight: FontWeight.bold),
@@ -179,11 +176,11 @@ class HomePage extends StatelessWidget {
                                 .horizontal, // Set the scroll direction to horizontal
                             itemCount: catItems.length,
                             itemBuilder: (context, index) {
-                              return   wPlantToday(
-                                  catItems[index].image!, catItems[index].name!,context);
+                              return wPlantToday(catItems[index].image!,
+                                  catItems[index].name!, context);
                             },
                             gridDelegate:
-                           const     SliverGridDelegateWithFixedCrossAxisCount(
+                                const SliverGridDelegateWithFixedCrossAxisCount(
                               crossAxisSpacing: 2,
                               childAspectRatio: 1.5,
                               crossAxisCount:
@@ -193,7 +190,6 @@ class HomePage extends StatelessWidget {
                             ),
                           ),
                         ),
-             
                         const TextLato('Featured nurseries',
                             fontSize: 18, fontWeight: FontWeight.bold),
                         const SizedBox(height: 8),
@@ -266,18 +262,13 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget wPlantToday(
-    String text,
-    String image,
-    context
-  ) {
+  Widget wPlantToday(String text, String image, context) {
     return InkWell(
       onTap: () {
-  Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => (NurserySearch())),
-                            );
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => (NurserySearch())),
+        );
       },
       child: Padding(
         padding: const EdgeInsets.all(6.0),
@@ -310,17 +301,49 @@ class HomePage extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          ClipRRect(
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(20),
-              topRight: Radius.circular(20),
-            ),
-            child: Image.asset(
-              image,
-              width: MediaQuery.of(context).size.width / 2.3,
-              height: 130,
-              fit: BoxFit.fill,
-            ),
+          Stack(
+            children: [
+              ClipRRect(
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(20),
+                  topRight: Radius.circular(20),
+                ),
+                child: Image.asset(
+                  image,
+                  width: MediaQuery.of(context).size.width / 2.3,
+                  height: 130,
+                  fit: BoxFit.fill,
+                ),
+              ),
+              Positioned(
+                  top: 8,
+                  right: 9,
+                  child: StatefulBuilder(
+                      builder: (BuildContext context, setState) {
+                return    BlocBuilder<BottomNavBloc, BottomNavState>(
+                      builder: (context, state) {
+                        return InkWell(
+                            onTap: () {
+                              setState(() {
+                                context
+                                    .read<BottomNavBloc>()
+                                    .add(BottomNavOnChange(1));
+                                state.listNav![1].isSelected = true;
+                              });
+                            },
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  color:
+                                      const Color(0xff000000).withOpacity(0.2),
+                                  borderRadius: BorderRadius.circular(30)),
+                              padding: const EdgeInsets.all(3),
+                              child: const Icon(Icons.bookmark,
+                                  size: 20, color: Color(0xff109D10)),
+                            ));
+                      },
+                    );
+                  }))
+            ],
           ),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 6.0, horizontal: 6),

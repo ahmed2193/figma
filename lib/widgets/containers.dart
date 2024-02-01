@@ -1,6 +1,7 @@
 // Helper method to build small button container
 import 'dart:developer';
 
+import 'package:figma/core/app_export.dart';
 import 'package:figma/models/home/drop_down_home_model.dart';
 import 'package:figma/models/nursery/nursery_model.dart';
 import 'package:figma/models/payments/payments_model.dart';
@@ -9,6 +10,8 @@ import 'package:figma/widgets/texts.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import '../theme/theme_helper.dart';
 
 Widget smallButtonContainer(String text, Color color, Function() onPressed) {
   return Container(
@@ -23,7 +26,12 @@ Widget smallButtonContainer(String text, Color color, Function() onPressed) {
             minimumSize: Size.zero,
             padding: const EdgeInsets.all(12),
             tapTargetSize: MaterialTapTargetSize.shrinkWrap),
-        child: TextLato(text, color: const Color(0xffA9A9B1), fontSize: 14, textOverflow: TextOverflow.ellipsis,)),
+        child: TextLato(
+          text,
+          color: const Color(0xffA9A9B1),
+          fontSize: 14,
+          textOverflow: TextOverflow.ellipsis,
+        )),
   );
 }
 
@@ -105,7 +113,7 @@ class ContainerNurseryItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-      bool isSelected = true;
+    bool isSelected = true;
 
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -127,8 +135,8 @@ class ContainerNurseryItem extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 2.0),
               child: InkWell(
-                onTap: (){
-                    context.push(Routes.reviews);
+                onTap: () {
+                  context.push(Routes.ratingAndReviewScreen);
                 },
                 child: Row(
                   children: [
@@ -152,7 +160,7 @@ class ContainerNurseryItem extends StatelessWidget {
             ),
             const Padding(
               padding: EdgeInsets.symmetric(vertical: 5),
-              child: TextLato("450 INR",
+              child: TextLato(" ₹ 450 ",
                   fontSize: 16,
                   color: Colors.black,
                   fontWeight: FontWeight.bold),
@@ -186,47 +194,54 @@ class ContainerNurseryItem extends StatelessWidget {
           children: [
             Stack(
               children: [
-                Padding(
-                    padding: const EdgeInsets.only(bottom: 5),
-                    child: Image.asset("assets/flower.png",
-                        width: 140, height: 140)),
+                InkWell(
+                  onTap: () {
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return const CustomAlertDialog();
+                      },
+                    );
+                  },
+                  child: Padding(
+                      padding: const EdgeInsets.only(bottom: 5),
+                      child: Image.asset("assets/flower.png",
+                          width: 140, height: 140)),
+                ),
                 Positioned(
                     top: 16,
                     right: 7,
                     child: Column(
                       children: [
                         StatefulBuilder(
-                        builder: (BuildContext context, setState) {
-                      return 
-                      
-                      Container(
-                        decoration: BoxDecoration(
-                            color: const Color(0xff000000).withOpacity(0.2),
-                            borderRadius: BorderRadius.circular(30)),
-                        padding: const EdgeInsets.all(3),
-                        child: InkWell(
-                          onTap: () {
-                            log('pr');
-                            setState(() {
-                              isSelected = !isSelected;
-                            });
-                          },
-                          child: Icon(
-                              // data.isSaved ?? false
-                              isSelected
-                                  ? Icons.bookmark
-                                  : Icons.bookmark_outline,
-                              size: 20,
-                              color:
-
-                                  //  data.isSaved ?? false
+                            builder: (BuildContext context, setState) {
+                          return Container(
+                            decoration: BoxDecoration(
+                                color: const Color(0xff000000).withOpacity(0.2),
+                                borderRadius: BorderRadius.circular(30)),
+                            padding: const EdgeInsets.all(3),
+                            child: InkWell(
+                              onTap: () {
+                                log('pr');
+                                setState(() {
+                                  isSelected = !isSelected;
+                                });
+                              },
+                              child: Icon(
+                                  // data.isSaved ?? false
                                   isSelected
-                                      ? const Color(0xff109D10)
-                                      : Colors.white),
-                        ),
-                      );
-                    }),
-                 
+                                      ? Icons.bookmark
+                                      : Icons.bookmark_outline,
+                                  size: 20,
+                                  color:
+
+                                      //  data.isSaved ?? false
+                                      isSelected
+                                          ? const Color(0xff109D10)
+                                          : Colors.white),
+                            ),
+                          );
+                        }),
                       ],
                     )),
                 onAddPressed == null
@@ -274,46 +289,39 @@ class ContainerDiscounts extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-
       clipBehavior: Clip.antiAliasWithSaveLayer,
       decoration: BoxDecoration(
         border: Border.all(color: Colors.white, width: 1),
         borderRadius: const BorderRadius.all(Radius.circular(10)),
         color: Colors.white,
       ),
-      child:
-
-
-
-      Row(
+      child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-        Row(
-              children: [
-                Container(
-                    padding:
-                    const EdgeInsets.symmetric(vertical: 14, horizontal: 8),
-                    decoration: const BoxDecoration(color: Color(0xffEDF3FF)),
-                    child: Image.asset("assets/ic-discount.png",
-                        width: 50, height: 50)),
-                const SizedBox(width: 15),
-            const Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      TextLato('Up to 100 INR Mobikwik Cashback',
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black),
-                      SizedBox(height: 4),
-                      TextLato('Use Code MBKFEST | above    199 INR  ',
-                          textOverflow: TextOverflow.ellipsis,
-                          color: Color(0xff7E818B)),
-                    ],
-
-                ),
-              ],
-            ),
-
+          Row(
+            children: [
+              Container(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 14, horizontal: 8),
+                  decoration: const BoxDecoration(color: Color(0xffEDF3FF)),
+                  child: Image.asset("assets/ic-discount.png",
+                      width: 50, height: 50)),
+              const SizedBox(width: 15),
+              const Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  TextLato('Up to 100 INR Mobikwik Cashback',
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black),
+                  SizedBox(height: 4),
+                  TextLato('Use Code MBKFEST | above    199 INR  ',
+                      textOverflow: TextOverflow.ellipsis,
+                      color: Color(0xff7E818B)),
+                ],
+              ),
+            ],
+          ),
           const SizedBox(width: 5),
           Column(
             children: [
@@ -336,9 +344,7 @@ class ContainerDiscounts extends StatelessWidget {
             ],
           ),
           const SizedBox(width: 11),
-
         ],
-
       ),
     );
   }
@@ -415,7 +421,7 @@ class ContainerDelivery extends StatelessWidget {
     return InkWell(
       onTap: onPressed,
       child: Container(
-        margin: EdgeInsets.only(right: 10, top: 10, bottom: 10),
+        margin: const EdgeInsets.only(right: 10, top: 10, bottom: 10),
         width: MediaQuery.of(context).size.width / 3.8,
         //height: 140,
         decoration: BoxDecoration(
@@ -432,36 +438,33 @@ class ContainerDelivery extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-             Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Icon(icons ?? Icons.mic_rounded,
-                        color: iconColor ?? const Color(0xff109D10), size: 22),
-                    const SizedBox(width: 3),
-                    hasCheckBox ?? false
-                        ? SizedBox(
-                        height: 15,
-                        width: 15,
-                        child: Checkbox(
-                            value: false,
-                            side: const BorderSide(
-                                color: Color(0xff109D10), width: 2),
-                            onChanged: (val) {}))
-                        :
-
-                    Flexible(child:
-                    Text(
-                      'Record',
-                      style: GoogleFonts.montserrat(
-                          fontSize: 12,
-                          fontWeight: FontWeight.bold,
-                          color: const Color(0xff109D10)),
-                    ),),
-                  ],
-
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Icon(icons ?? Icons.mic_rounded,
+                      color: iconColor ?? const Color(0xff109D10), size: 22),
+                  const SizedBox(width: 3),
+                  hasCheckBox ?? false
+                      ? SizedBox(
+                          height: 15,
+                          width: 15,
+                          child: Checkbox(
+                              value: false,
+                              side: const BorderSide(
+                                  color: Color(0xff109D10), width: 2),
+                              onChanged: (val) {}))
+                      : Flexible(
+                          child: Text(
+                            'Record',
+                            style: GoogleFonts.montserrat(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                                color: const Color(0xff109D10)),
+                          ),
+                        ),
+                ],
               ),
-
               const SizedBox(height: 15),
               Text(
                 desc ?? 'Tap here and hold',
@@ -496,6 +499,108 @@ class ContainerPayment extends StatelessWidget {
       trailing: payment.desc != null
           ? const SizedBox.shrink()
           : const Icon(Icons.arrow_forward_ios, size: 18),
+    );
+  }
+}
+
+class CustomAlertDialog extends StatelessWidget {
+  const CustomAlertDialog({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      contentPadding: const EdgeInsets.all(0),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(30.0), // Set border radius
+      ),
+      content: SizedBox(
+        height: MediaQuery.of(context).size.height / 3,
+        width: MediaQuery.of(context).size.width,
+        child: Column(
+          children: [
+            Expanded(
+              child: Image.asset(
+                "assets/flower.png",
+                fit: BoxFit.cover,
+                width: double.infinity,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Download',
+                    style: GoogleFonts.lato(
+                        color: const Color(0xff5E0000),
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        decoration: TextDecoration.none),
+                  ),
+                  const SizedBox(
+                    width: 12,
+                  ),
+                  const Icon(
+                    Icons.download,
+                    color: Color(0xff5E0000),
+                  )
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class SubmitAlertDialog extends StatelessWidget {
+  const SubmitAlertDialog({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      contentPadding: const EdgeInsets.all(0),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(30.0), // Set border radius
+      ),
+      content: GestureDetector(
+        onTap: (){
+            context.push(Routes.detailNursery);
+        },
+        child: SizedBox(
+          height: MediaQuery.of(context).size.height / 3.5,
+          width: MediaQuery.of(context).size.width,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 8),
+                child: CustomImageView(
+                  // color: Colors.transparent,
+                  imagePath: ImageConstant.doneIcon,
+                ),
+              ),
+              Text(
+                'Thank you for the review!',
+                style: theme.textTheme.headlineMedium!.copyWith(
+                  color: theme.colorScheme.errorContainer.withOpacity(1),
+                  fontSize: 22,
+                ),
+              ),
+              Text(
+                'You’ve just helped your fellow plant parents',
+                textAlign: TextAlign.center,
+                style: theme.textTheme.headlineMedium!.copyWith(
+                  color: Colors.grey,
+                  fontSize: 18,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }

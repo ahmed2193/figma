@@ -104,7 +104,7 @@ class _ProfileState extends State<Profile> {
                   ),
                   InkWell(
                     onTap: () {
-                      context.push(Routes.reviews);
+                      context.push(Routes.starRatingScreen);
                     },
                     child: Padding(
                         padding: const EdgeInsets.symmetric(

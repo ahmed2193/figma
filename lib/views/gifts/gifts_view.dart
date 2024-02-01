@@ -61,20 +61,18 @@ class _BookmarkState extends State<Gift> {
                           children: [
                             TabBar(
                               onTap: (val) {
-                                print('val $val' );
-                                if(val == 1){
-                                  showBottomSheetProceedingFill(context,(){
+                                print('val $val');
+                                if (val == 1) {
+                                  showBottomSheetProceedingFill(context, () {
                                     context
                                         .read<BookmarkBloc>()
                                         .add(ChangeIndexPageBookMark(val));
-
                                   });
-                                }else{
+                                } else {
                                   context
                                       .read<BookmarkBloc>()
                                       .add(ChangeIndexPageBookMark(0));
                                 }
-
                               },
                               labelColor: const Color(0xff109D10),
                               labelStyle: GoogleFonts.lato(
@@ -87,8 +85,6 @@ class _BookmarkState extends State<Gift> {
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
-
-
                                       TextLato('Simple Gifting',
                                           fontWeight: FontWeight.bold,
                                           fontSize: 14,
@@ -99,21 +95,19 @@ class _BookmarkState extends State<Gift> {
                                   ),
                                 ),
                                 Tab(
-                                  child:  Row(
-                                      mainAxisAlignment: MainAxisAlignment.start,
-                                      children: [
-
-                                        TextLato(
-                                          'Bulk Gifting',
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 14,
-                                          color: state.indexPage != 1
-                                              ? Colors.black
-                                              : const Color(0xff109D10),
-                                        )
-                                      ],
-                                    ),
-
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      TextLato(
+                                        'Bulk Gifting',
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 14,
+                                        color: state.indexPage != 1
+                                            ? Colors.black
+                                            : const Color(0xff109D10),
+                                      )
+                                    ],
+                                  ),
                                 )
                               ],
                             ),

@@ -55,6 +55,7 @@ class SearchBarTemplate extends StatelessWidget {
               suffixIconConstraints: const BoxConstraints(minWidth: 40),
 
               hintText: label,
+              hintStyle: TextStyle(color: Colors.black),
               contentPadding:
                   const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
               border: const OutlineInputBorder(borderSide: BorderSide.none),
@@ -65,3 +66,5 @@ class SearchBarTemplate extends StatelessWidget {
     );
   }
 }
+
+

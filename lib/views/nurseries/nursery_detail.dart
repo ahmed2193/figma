@@ -97,9 +97,7 @@ class _NurseryDetailState extends State<NurseryDetail> {
           onPressed: () {
             showBottomSheetCategoryNursery(context);
           }),
-      body:
-      
-  CustomScrollView(
+      body: CustomScrollView(
         slivers: [
           SliverToBoxAdapter(
             child: Padding(
@@ -145,33 +143,33 @@ class _NurseryDetailState extends State<NurseryDetail> {
                                   fontSize: 16,
                                   color: Color(0xff7E818B),
                                 ),
-                                SizedBox(height: 8),
-                                Row(
-                                  children: [
-                                    Icon(Icons.watch_later_outlined, size: 16),
-                                    SizedBox(width: 4),
-                                    TextLato(
-                                      '20 mints',
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.symmetric(
-                                        horizontal: 8,
-                                      ),
-                                      child: TextLato('|', color: Colors.black),
-                                    ),
-                                    Icon(Icons.location_on_outlined, size: 16),
-                                    SizedBox(width: 4),
-                                    Flexible(
-                                      child: TextLato(
-                                        '3 km',
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    )
-                                  ],
-                                )
+                                // SizedBox(height: 8),
+                                // Row(
+                                //   children: [
+                                //     Icon(Icons.watch_later_outlined, size: 16),
+                                //     SizedBox(width: 4),
+                                //     TextLato(
+                                //       '20 mints',
+                                //       color: Colors.black,
+                                //       fontWeight: FontWeight.bold,
+                                //     ),
+                                //     Padding(
+                                //       padding: EdgeInsets.symmetric(
+                                //         horizontal: 8,
+                                //       ),
+                                //       child: TextLato('|', color: Colors.black),
+                                //     ),
+                                //     Icon(Icons.location_on_outlined, size: 16),
+                                //     SizedBox(width: 4),
+                                //     Flexible(
+                                //       child: TextLato(
+                                //         '3 km',
+                                //         color: Colors.black,
+                                //         fontWeight: FontWeight.bold,
+                                //       ),
+                                //     )
+                                //   ],
+                                // )
                               ],
                             ),
                           ),
@@ -180,7 +178,7 @@ class _NurseryDetailState extends State<NurseryDetail> {
                           ),
                           InkWell(
                             onTap: () {
-                              context.push(Routes.reviews);
+                              context.push(Routes.ratingAndReviewScreen);
                             },
                             child: Container(
                               clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -332,8 +330,6 @@ class _NurseryDetailState extends State<NurseryDetail> {
           // Add other SliverList, SliverGrid, etc., widgets as needed
         ],
       ),
-    
-   
     );
   }
 }

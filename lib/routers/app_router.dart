@@ -15,24 +15,42 @@ import 'package:figma/views/profiles/frequently_view.dart';
 import 'package:figma/views/profiles/privacy_and_policy.dart';
 import 'package:figma/views/profiles/profile.dart';
 import 'package:figma/views/profiles/profile_data.dart';
+import 'package:figma/views/rate_us_and_review_screen/rate_us_and_review_screen.dart';
+import 'package:figma/views/rating_and_review_screen/ratingandreview_screen.dart';
 import 'package:figma/views/reviews/reviews_view.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+
+import '../views/deliveries/cart_view.dart';
+import '../views/gifts/gifts_view.dart';
+import '../views/order_summary_screen/ordersummary_screen.dart';
+import '../views/ordertracking_page/ordertracking_page.dart';
+import '../views/payment_method_screen/payment_method_screen.dart';
+import '../views/rateus_screen/rateus_screen.dart';
+import '../views/star_rating_screen/starrating_screen.dart';
 
 class AppRouter {
   static GoRouter router = GoRouter(routes: [
     GoRoute(
         path: Routes.splash,
-        builder: (context, state) => const SimpleSplashPage()),
+        builder: (context, state) =>
+
+            // OrdertrackingPage()
+            SimpleSplashPage()
+        //
+        ),
+    // GoRoute(
+    //     path: Routes.login,
+    //     builder: (context, state) => RatingAndReviewScreen()),
     GoRoute(path: Routes.login, builder: (context, state) => const LoginPage()),
+    // TwentyeightTabContainerScreen
     GoRoute(
         path: Routes.otp,
         builder: (context, state) => const OTPVerificationPage()),
     GoRoute(
         path: Routes.navHome,
-        builder: (context, state) =>  BlocProvider<BottomNavBloc>(
-      create: (context) => BottomNavBloc()..add(const BottomNavInit()),
-           
+        builder: (context, state) => BlocProvider<BottomNavBloc>(
+              create: (context) => BottomNavBloc()..add(const BottomNavInit()),
               child: BottomNavHomePage(),
             )),
     GoRoute(path: Routes.home, builder: (context, state) => const HomePage()),
@@ -55,5 +73,25 @@ class AppRouter {
         path: Routes.detailNursery,
         builder: (context, state) => const NurseryDetail()),
     GoRoute(path: Routes.reviews, builder: (context, state) => const Reviews()),
+    GoRoute(
+        path: Routes.ratingAndReviewScreen,
+        builder: (context, state) => RatingAndReviewScreen()),
+    GoRoute(
+        path: Routes.rateusScreen, builder: (context, state) => RateUsScreen()),
+    GoRoute(
+        path: Routes.rateUsAndReviewScreen,
+        builder: (context, state) => RateUsAndReviewScreen()),
+    GoRoute(path: Routes.gift, builder: (context, state) => Gift()),
+    GoRoute(
+        path: Routes.orderSummaryScreen,
+        builder: (context, state) => OrderSummaryScreen()),
+    GoRoute(
+        path: Routes.paymentMethodScreen,
+        builder: (context, state) => PaymentMethodScreen()),
+    GoRoute(
+        path: Routes.ordertrackingPage,
+        builder: (context, state) => OrdertrackingPage()),
+    GoRoute(path: Routes.cart, builder: (context, state) => Cart()),
+    GoRoute(path: Routes.starRatingScreen, builder: (context, state) => StarRatingScreen()),
   ]);
 }

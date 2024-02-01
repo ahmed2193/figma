@@ -16,4 +16,13 @@ class Routes {
   static const nurserySearch = '/nurserySearchPage';
   static const detailNursery = '/detailNurseryPage';
   static const searchNursery = '/searchNurseryPage';
+  static const ratingAndReviewScreen = '/ratingAndReviewScreen';
+  static const rateusScreen = '/rateusScreen';
+  static const rateUsAndReviewScreen = '/rateUsAndReviewScreen';
+  static const gift = '/gift';
+  static const orderSummaryScreen = '/orderSummaryScreen';
+  static const paymentMethodScreen = '/paymentMethodScreen';
+  static const ordertrackingPage = '/ordertrackingPage';
+  static const cart = '/cart';
+  static const starRatingScreen = '/starRatingScreen';
 }

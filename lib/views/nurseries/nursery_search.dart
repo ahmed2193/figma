@@ -35,7 +35,16 @@ class NurserySearch extends StatelessWidget {
         child: ListView(
           children: [
             SearchBarTemplate('Rose Flower',
-                suffixIcon: const SizedBox(), onPressed: () {}),
+                suffixIcon: IconButton(
+                  icon: Icon(
+                    Icons.close,
+                    color: Colors.black,
+                  ),
+                  onPressed: () {
+              
+                  },
+                ),
+                onPressed: () { context.pop();}),
             const SizedBox(height: 11),
             RichText(
                 text: TextSpan(children: [

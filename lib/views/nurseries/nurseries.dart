@@ -80,14 +80,11 @@ class _ContainerNurseryState extends State<ContainerNursery> {
                           builder: (context, state) {
                             return InkWell(
                                 onTap: () {
-                                  
                                   setState(() {
-
                                     context
                                         .read<BottomNavBloc>()
                                         .add(BottomNavOnChange(1));
-                                                                 state.listNav![1].isSelected = true;
-                                        
+                                    state.listNav![1].isSelected = true;
                                   });
                                 },
                                 child: Container(
