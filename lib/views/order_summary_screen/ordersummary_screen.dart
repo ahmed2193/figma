@@ -166,7 +166,13 @@ class OrderSummaryScreen extends StatelessWidget {
   Widget _buildChipView(BuildContext context) {
     return Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: List<Widget>.generate(2, (index) => ChipviewItemWidget()));
+        children: List<Widget>.generate(
+            2,
+            (index) => ChipviewItemWidget(
+                  onPressed: () {
+                    context.push(Routes.cart);
+                  },
+                )));
   }
 
   /// Section Widget
@@ -176,7 +182,12 @@ class OrderSummaryScreen extends StatelessWidget {
           padding: EdgeInsets.only(top: 3.v, bottom: 4.v),
           child:
               Text("Your Order", style: CustomTextStyles.titleSmallMontserrat)),
-      CustomOutlinedButton(width: 150.h, text: "Mark As Favorite")
+      CustomOutlinedButton(
+          width: 150.h,
+          onPressed: () {
+            context.push(Routes.cart);
+          },
+          text: "Mark As Favorite")
     ]);
   }
 
@@ -222,9 +233,9 @@ class OrderSummaryScreen extends StatelessWidget {
   /// Section Widget
   Widget _buildRepeatOrder(BuildContext context) {
     return CustomElevatedButton(
-      onPressed: (){
-    context.push(Routes.cart);
-      },
+        onPressed: () {
+          context.push(Routes.cart);
+        },
         height: 69.v,
         text: "Repeat Order",
         subText: "View Cart On Next Step",

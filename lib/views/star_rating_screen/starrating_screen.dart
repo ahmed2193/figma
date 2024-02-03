@@ -1,6 +1,7 @@
 import 'package:figma/core/app_export.dart';
 import 'package:figma/widgets/custom_elevated_button.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class StarRatingScreen extends StatelessWidget {
   const StarRatingScreen({Key? key}) : super(key: key);
@@ -175,6 +176,9 @@ class StarRatingScreen extends StatelessWidget {
                         height: 41.v,
                         width: 362.h,
                         text: "Okay",
+                        onPressed: (){
+                          context.pop();
+                        },
                         buttonStyle: CustomButtonStyles.fillPrimaryTL5,
                         buttonTextStyle: CustomTextStyles.titleMediumGray50,
                         alignment: Alignment.topCenter)

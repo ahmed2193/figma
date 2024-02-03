@@ -1,4 +1,5 @@
 import 'package:figma/controllers/home/home_bloc.dart';
+import 'package:figma/core/utils/size_utils.dart';
 import 'package:figma/models/home/drop_down_home_model.dart';
 import 'package:figma/routers/route.dart';
 import 'package:figma/views/nurseries/nursery_search.dart';
@@ -170,7 +171,7 @@ class HomePage extends StatelessWidget {
                             fontSize: 18, fontWeight: FontWeight.bold),
                         const SizedBox(height: 15),
                         SizedBox(
-                          height: MediaQuery.of(context).size.height / 3.3,
+                          height: 280.v,
                           child: GridView.builder(
                             scrollDirection: Axis
                                 .horizontal, // Set the scroll direction to horizontal
@@ -196,7 +197,7 @@ class HomePage extends StatelessWidget {
                         BlocBuilder<HomeBloc, HomeState>(
                           builder: (context, state) {
                             return SizedBox(
-                              height: MediaQuery.of(context).size.height / 3.2,
+                              height:300.v,
                               // width: MediaQuery.of(context).size.width * 1,
                               child: ListView.separated(
                                 separatorBuilder: (context, index) =>

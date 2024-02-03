@@ -566,38 +566,42 @@ class SubmitAlertDialog extends StatelessWidget {
         borderRadius: BorderRadius.circular(30.0), // Set border radius
       ),
       content: GestureDetector(
-        onTap: (){
-            context.push(Routes.detailNursery);
+        onTap: () {
+          context.push(Routes.detailNursery);
         },
         child: SizedBox(
-          height: MediaQuery.of(context).size.height / 3.5,
+          height: MediaQuery.of(context).size.height / 3,
           width: MediaQuery.of(context).size.width,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 8),
-                child: CustomImageView(
-                  // color: Colors.transparent,
-                  imagePath: ImageConstant.doneIcon,
+          child: Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8),
+                  child: CustomImageView(
+                    // color: Colors.transparent,
+                    imagePath: ImageConstant.doneIcon,
+                  ),
                 ),
-              ),
-              Text(
-                'Thank you for the review!',
-                style: theme.textTheme.headlineMedium!.copyWith(
-                  color: theme.colorScheme.errorContainer.withOpacity(1),
-                  fontSize: 22,
+                Text(
+                  textAlign: TextAlign.start,
+                  'Thank you for the review!',
+                  style: theme.textTheme.bodyLarge!.copyWith(
+                    color: theme.colorScheme.errorContainer.withOpacity(1),
+                    fontSize: 22,
+                  ),
                 ),
-              ),
-              Text(
-                'You’ve just helped your fellow plant parents',
-                textAlign: TextAlign.center,
-                style: theme.textTheme.headlineMedium!.copyWith(
-                  color: Colors.grey,
-                  fontSize: 18,
+                Text(
+                  'You’ve just helped your fellow plant parents',
+                  textAlign: TextAlign.center,
+                  style: theme.textTheme.bodySmall!.copyWith(
+                    color: Colors.grey,
+                    fontSize: 16,
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

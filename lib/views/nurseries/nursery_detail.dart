@@ -8,7 +8,9 @@ import 'package:figma/widgets/texts.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../core/utils/image_constant.dart';
 import '../../routers/route.dart';
+import '../../widgets/custom_image_view.dart';
 
 class NurseryDetail extends StatefulWidget {
   const NurseryDetail({Key? key}) : super(key: key);
@@ -81,7 +83,7 @@ class _NurseryDetailState extends State<NurseryDetail> {
           icon: const Icon(Icons.arrow_back_ios),
           color: Colors.black,
           onPressed: () {
-            Navigator.pop(context);
+            context.pushReplacement(Routes.navHome);
           },
         ),
       ),
@@ -90,7 +92,9 @@ class _NurseryDetailState extends State<NurseryDetail> {
           extendedPadding: const EdgeInsets.symmetric(horizontal: 30),
           label: const TextLato('Category',
               color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18),
-          icon: const Icon(Icons.category),
+          icon: CustomImageView(
+            imagePath: ImageConstant.catIcon,
+          ),
           backgroundColor: const Color(0xff109D10),
           shape: RoundedRectangleBorder(
               side: BorderSide.none, borderRadius: BorderRadius.circular(10)),

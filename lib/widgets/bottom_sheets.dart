@@ -1,6 +1,9 @@
+import 'dart:developer';
+
 import 'package:figma/models/nursery/nursery_add_model.dart';
 import 'package:figma/models/nursery/nursery_category_model.dart';
 import 'package:figma/models/nursery/nursery_model.dart';
+import 'package:figma/routers/route.dart';
 import 'package:figma/views/profiles/address_view.dart';
 import 'package:figma/widgets/buttons.dart';
 import 'package:figma/widgets/containers.dart';
@@ -21,63 +24,126 @@ showBottomSheetCategoryNursery(BuildContext context) {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(20.0),
       ),
-      builder: (context) => IntrinsicHeight(
-              child: Container(
-            padding: const EdgeInsets.all(20.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const TextLato('Categories',
-                    color: Colors.black,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold),
-                const SizedBox(height: 8),
-                Column(
+      builder: (context) => 
+      
+      ShowBottomSheetCategoryNurseryBody());
+}
+
+class ShowBottomSheetCategoryNurseryBody extends StatefulWidget {
+  const ShowBottomSheetCategoryNurseryBody({
+    super.key,
+  });
+
+  @override
+  State<ShowBottomSheetCategoryNurseryBody> createState() => _ShowBottomSheetCategoryNurseryBodyState();
+}
+
+class _ShowBottomSheetCategoryNurseryBodyState extends State<ShowBottomSheetCategoryNurseryBody> {
+
+ bool isSelected = true;
+  @override
+  Widget build(BuildContext context) {
+                
+
+    return IntrinsicHeight(
+            child: Container(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const TextLato('Categories',
+                  color: Colors.black,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold),
+              const SizedBox(height: 8),
+          Column(
                   children: List.generate(
-                      NurseryCategoryModel.listCategoryNursery.length, (index) {
+                      NurseryCategoryModel.listCategoryNursery.length,
+                      (index) {
                     final category =
                         NurseryCategoryModel.listCategoryNursery[index];
                     return InkWell(
                       onTap: () {
                         Navigator.pop(context);
                       },
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 10),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            TextLato(category.label ?? '',
-                                color: Colors.black, fontSize: 18),
-                            category.hasAdded ?? false
-                                ? Container(
-                                    padding: const EdgeInsets.symmetric(
-                                        vertical: 4, horizontal: 10),
-                                    decoration: BoxDecoration(
-                                        color: const Color(0xff109D10),
-                                        borderRadius: BorderRadius.circular(2)),
-                                    child: Row(
-                                      children: [
-                                        TextLato(category.value.toString(),
-                                            color: Colors.white,
-                                            fontSize: 12,
-                                            fontWeight: FontWeight.w700),
-                                        const SizedBox(width: 4),
-                                        const Icon(Icons.add_circle_outline,
-                                            size: 14, color: Colors.white)
-                                      ],
-                                    ),
-                                  )
-                                : TextLato(category.value.toString(),
-                                    color: Colors.black, fontSize: 18)
-                          ],
-                        ),
+                      child: Column(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 10),
+                            child: Row(
+                              mainAxisAlignment:
+                                  MainAxisAlignment.spaceBetween,
+                              children: [
+                                category.hasAdded ?? false
+                                    ? InkWell(
+                                        onTap: () {
+                                          setState(() {
+                                            isSelected = !isSelected;
+                                            log(isSelected.toString());
+                                          });
+                                        },
+                                        child: Row(
+                                          children: [
+                                            TextLato(category.label ?? '',
+                                                color: Colors.black,
+                                                fontSize: 18),
+                                            const SizedBox(width: 4),
+                                            Icon(
+                                              
+                                          isSelected?    Icons.add_circle_outline: Icons.remove_circle_outline,
+                                                size: 18,
+                                                color: Color(0xff109D10)),
+                                          ],
+                                        ),
+                                      )
+                                    : TextLato(category.label ?? '',
+                                        color: Colors.black, fontSize: 18),
+                              TextLato(category.value.toString(),
+                                        color: Colors.black, fontSize: 18)
+                              ],
+                            ),
+                          ),
+                          category.hasAdded ?? false
+                              ?isSelected?SizedBox(): Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      vertical: 6, horizontal: 20),
+                                  child: Column(
+                                    children: [
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          TextLato('Rose ',
+                                              color: Colors.black, fontSize: 18),
+                                          TextLato(3.toString(),
+                                              color: Colors.black, fontSize: 18)
+                                        ],
+                                      ),
+                                      SizedBox(height: 6,),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          TextLato( 'SunFlower',
+                                              color: Colors.black, fontSize: 18),
+                                          TextLato(2.toString(),
+                                              color: Colors.black, fontSize: 18)
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                )
+                              : SizedBox(),
+                        ],
                       ),
                     );
                   }),
                 )
-              ],
-            ),
-          )));
+            
+            ],
+          ),
+        ));
+  }
 }
 
 showBottomSheetAddNursery(BuildContext context) {
@@ -233,23 +299,27 @@ showBottomSheetAddNursery(BuildContext context) {
                       Expanded(
                         child: InkWell(
                           onTap: () {
-                            Navigator.pop(context);
+                            context.push(Routes.cart);
                           },
                           child: Container(
-                                                      padding: const EdgeInsets.symmetric(
-                            vertical: 10, horizontal: 15),
-                                                      decoration: BoxDecoration(
-                            color: const Color(0xff109D10),
-                            borderRadius: BorderRadius.circular(10),
-                            border:
-                                Border.all(color: const Color(0xffE8E8F1))),
-                                                      child: const Center(
-                          child: TextLato('Add item 14.0',
-                              color: Colors.white,
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold),
-                                                      ),
-                                                    ),
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 10, horizontal: 8),
+                            decoration: BoxDecoration(
+                                color: const Color(0xff109D10),
+                                borderRadius: BorderRadius.circular(10),
+                                border:
+                                    Border.all(color: const Color(0xffE8E8F1))),
+                            child: const Center(
+                              child: Row(
+                                children: [
+                                  TextLato('Add item ₹ 14.00',
+                                      color: Colors.white,
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold),
+                                ],
+                              ),
+                            ),
+                          ),
                         ),
                       )
                     ],

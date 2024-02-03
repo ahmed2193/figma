@@ -4,16 +4,13 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:figma/models/home/navigation_menu_home_model.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-
-import '../../widgets/texts.dart';
 
 part 'bottom_nav_event.dart';
 part 'bottom_nav_state.dart';
 
 class BottomNavBloc extends Bloc<BottomNavEvent, BottomNavState> {
   PageController pageController = PageController();
-   List<NavigationMenuHomeModel>? listNav;
+  List<NavigationMenuHomeModel>? listNav;
   BottomNavBloc() : super(BottomNavInitial()) {
     on<BottomNavInit>((event, emit) {
       emit(BottomNavState(listNav: [
@@ -26,7 +23,7 @@ class BottomNavBloc extends Bloc<BottomNavEvent, BottomNavState> {
     });
 
     on<BottomNavOnChange>((event, emit) {
-    listNav  = state.listNav!;
+      listNav = state.listNav!;
       for (var element in listNav!) {
         element.isSelected = false;
       }
@@ -34,14 +31,7 @@ class BottomNavBloc extends Bloc<BottomNavEvent, BottomNavState> {
       inspect(listNav);
       emit(const BottomNavState().copyWith(listNav: listNav));
 
-
-
-        pageController.jumpToPage(event.index);
-
-
+      pageController.jumpToPage(event.index);
     });
   }
-
-
-
 }

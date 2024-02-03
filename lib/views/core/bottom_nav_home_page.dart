@@ -33,7 +33,7 @@ class _BottomNavHomePageState extends State<BottomNavHomePage> {
                   HomePage(),
                   Bookmark(),
                   Gift(),
-                  Cart(),
+                  Cart(primaryRout: true),
                   Order(),
                 ],
               ));

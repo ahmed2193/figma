@@ -18,6 +18,7 @@ class ImageConstant {
   static String imgImage27 = '$imagePath/img_image_27.png';
 
   static String imgVector = '$imagePath/img_vector.svg';
+  static String profileImage = '$imagePath/profile_image.svg';
 
   static String imgArrowRight = '$imagePath/img_arrow_right.svg';
 
@@ -64,6 +65,8 @@ class ImageConstant {
 
   static String imgSettingsOnerrorcontainer =
       '$imagePath/img_settings_onerrorcontainer.svg';
+  static String callIcon = '$imagePath/call_icon.png';
+  static String catIcon = '$imagePath/cat_icon.svg';
 
   static String imgSettingsBlue700 = '$imagePath/img_settings_blue_700.svg';
 
@@ -119,5 +122,5 @@ class ImageConstant {
       '$imagePath/img_settings_errorcontainer_12x9.svg';
 
   static String imageNotFound = 'assets/images/image_not_found.png';
-  static String doneIcon = '$imagePath/done_icon.svg';
+  static String doneIcon = '$imagePath/done_icon.png';
 }

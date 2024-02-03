@@ -15,8 +15,8 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../controllers/home/home_bloc.dart';
 
 class Cart extends StatefulWidget {
-  const Cart({super.key});
-
+  const Cart({super.key, this.primaryRout = false});
+  final bool primaryRout;
   @override
   State<Cart> createState() => _CartState();
 }
@@ -30,8 +30,8 @@ class _CartState extends State<Cart> {
         bottomNavigationBar: Stack(
           children: [
             Container(
-                padding: EdgeInsets.only(bottom: 60),
-                height: 170,
+                padding: EdgeInsets.only(bottom: widget.primaryRout ? 60.v : 0),
+                height: widget.primaryRout ? 170.v : 100.v,
                 color: Colors.white,
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -179,6 +179,15 @@ class _CartState extends State<Cart> {
             expandedHeight: MediaQuery.of(context).size.width * 0.2,
             pinned: true,
             automaticallyImplyLeading: false,
+            leading: widget.primaryRout
+                ? SizedBox()
+                : IconButton(
+                    icon: const Icon(Icons.arrow_back_ios),
+                    color: theme.primaryColor,
+                    onPressed: () {
+                      context.push(Routes.navHome);
+                    },
+                  ),
             /*    leading: const Icon(
           Icons.arrow_back_ios,
           color: Color(0xff109D10),

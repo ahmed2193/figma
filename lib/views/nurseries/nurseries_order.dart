@@ -23,7 +23,6 @@ class NurseriesOrder extends StatelessWidget {
             itemBuilder: (context, index) => const ContainerNurseryOrder(),
             separatorBuilder: (context, index) => const SizedBox(height: 20),
             itemCount: 10),
-
       ]),
     );
   }
@@ -35,9 +34,8 @@ class ContainerNurseryOrder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){
-                context.push(Routes.orderSummaryScreen);
-
+      onTap: () {
+        context.push(Routes.orderSummaryScreen);
       },
       child: Container(
         decoration: BoxDecoration(
@@ -101,14 +99,14 @@ class ContainerNurseryOrder extends StatelessWidget {
                       ),
                     ],
                   ),
-                  Flexible(child:
-                  Column(
+                  Flexible(
+                      child: Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Container(
                         padding: const EdgeInsets.symmetric(
-                            vertical: 3, horizontal: 6),
+                            vertical: 3, horizontal: 4),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(2),
                           color: const Color(0xffD9D9D9),
@@ -117,13 +115,18 @@ class ContainerNurseryOrder extends StatelessWidget {
                             fontSize: 12, color: Color(0xff868686)),
                       ),
                       const SizedBox(height: 32),
-                      Text(
-                        "View More >",
-                        style: GoogleFonts.lato(
-                            color: const Color(0xff109D10),
-                            fontSize: 12,
-                            fontWeight: FontWeight.normal,
-                            decoration: TextDecoration.none),
+                      InkWell(
+                        onTap: () {
+                          context.push(Routes.detailNursery);
+                        },
+                        child: Text(
+                          "View More >",
+                          style: GoogleFonts.lato(
+                              color: const Color(0xff109D10),
+                              fontSize: 11,
+                              fontWeight: FontWeight.normal,
+                              decoration: TextDecoration.none),
+                        ),
                       ),
                     ],
                   ))
@@ -226,13 +229,16 @@ class ContainerNurseryOrder extends StatelessWidget {
                           Row(
                             children: List.generate(
                                 5,
-                                (index) => const Icon(Icons.star_outline_rounded,
+                                (index) => const Icon(
+                                    Icons.star_outline_rounded,
                                     size: 22)),
                           ),
                         ],
                       ),
                       FilledButton.icon(
-                          onPressed: () {},
+                          onPressed: () {
+                            context.push(Routes.cart);
+                          },
                           style: const ButtonStyle(
                             shape: MaterialStatePropertyAll(
                                 RoundedRectangleBorder(

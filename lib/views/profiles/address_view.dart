@@ -1,9 +1,13 @@
+import 'package:figma/core/utils/size_utils.dart';
 import 'package:figma/models/home/drop_down_home_model.dart';
 import 'package:figma/widgets/containers.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import '../../core/utils/image_constant.dart';
+import '../../widgets/custom_image_view.dart';
 
 class Address extends StatefulWidget {
   const Address({Key? key}) : super(key: key);
@@ -60,34 +64,38 @@ class _AddressState extends State<Address> {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Expanded(child:
-              Padding(padding: EdgeInsets.only(left: 10, top: 10, bottom: 0), child:
-
-              Text(
-    "Enter complete address",
-    style: GoogleFonts.lato(
-    color: Colors.black,
-    fontWeight: FontWeight.bold,
-    fontSize: 24,
-    ),
-    ),
-    ),),  Padding(padding: EdgeInsets.only(left: 10, top: 10, bottom: 0), child:
-              IconButton(
-                icon: const Icon(
-                  Icons.cancel,
-                  color: Color(0xff7D7D7D),
-                  size: 24,
+              Expanded(
+                child: Padding(
+                  padding: EdgeInsets.only(left: 10, top: 10, bottom: 0),
+                  child: Text(
+                    "Enter complete address",
+                    style: GoogleFonts.lato(
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 24,
+                    ),
+                  ),
                 ),
-                onPressed: () {
-                  Navigator.pop(context);
-                },
               ),
+              Padding(
+                padding: EdgeInsets.only(left: 10, top: 10, bottom: 0),
+                child: IconButton(
+                  icon: const Icon(
+                    Icons.cancel,
+                    color: Color(0xff7D7D7D),
+                    size: 24,
+                  ),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                ),
               ),
             ],
           ),
-
           Divider(),
-          SizedBox(height: 10,),
+          SizedBox(
+            height: 10,
+          ),
           Container(
             color: Colors.white,
             width: double.infinity,
@@ -115,7 +123,12 @@ class _AddressState extends State<Address> {
                             (index) => Padding(
                                   padding: const EdgeInsets.only(right: 12),
                                   child: ContainerDropwDown(DropwDownModel(
-                                      ['Home', 'Work', 'Hotel', 'Others'][index],
+                                      [
+                                        'Home',
+                                        'Work',
+                                        'Hotel',
+                                        'Others'
+                                      ][index],
                                       [false, false, false, false][index])),
                                 )),
                       ),
@@ -127,306 +140,304 @@ class _AddressState extends State<Address> {
                       // Text input for Receiver's Name
                       SizedBox(
                         height: 55,
-                      child:
-                      TextField(
-                        controller: receiverNameController,
-                        keyboardType: TextInputType.name,
-
-                        decoration:  InputDecoration(
-                          suffixIcon: Container(
-                            width: 80,
-                            child: Row(
-                              children: [
-                                const Icon(
-                                  Icons.cancel,
-                                  color: Colors.grey,
-                                  size: 15,
-                                ),
-                                Padding(padding: EdgeInsets.only(top: 8, bottom: 8),child: VerticalDivider(color: Colors.grey[200]),),
-
-                                const Icon(
-                                  Icons.contact_phone_outlined,
-                                  color: Colors.grey,
-                                  size: 24,
-                                ),
-                              ],
+                        child: TextField(
+                          controller: receiverNameController,
+                          keyboardType: TextInputType.name,
+                          decoration: InputDecoration(
+                            suffixIcon: Container(
+                              width: 60,
+                              child: Row(
+                                children: [
+                              
+                                  VerticalDivider(
+                                      color: Colors.grey[200]),
+                                  CustomImageView(
+                                    imagePath: ImageConstant.callIcon,
+                                  
+                                  ),
+                                ],
+                              ),
                             ),
+                            hintStyle: TextStyle(color: Colors.grey),
+                            labelStyle: TextStyle(color: Colors.grey),
+                            focusedBorder: OutlineInputBorder(
+                                //Outline border type for TextFeild
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10)),
+                                borderSide: BorderSide(
+                                  color: Colors.grey[200]!,
+                                  width: 1,
+                                )),
+                            enabled: true,
+                            enabledBorder: OutlineInputBorder(
+                                //Outline border type for TextFeild
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10)),
+                                borderSide: BorderSide(
+                                  color: Colors.grey[200]!,
+                                  width: 1,
+                                )),
+                            border: OutlineInputBorder(
+                                //Outlin
+                                // e border type for TextFeild
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10)),
+                                borderSide: BorderSide(
+                                  color: Colors.grey[200]!,
+                                  width: 1,
+                                )),
+                            labelText: 'Receiver’s name*',
                           ),
-                          hintStyle: TextStyle(color: Colors.grey),
-                          labelStyle: TextStyle(color: Colors.grey),
-                          focusedBorder:  OutlineInputBorder( //Outline border type for TextFeild
-                              borderRadius: BorderRadius.all(Radius.circular(10)),
-                              borderSide: BorderSide(
-                                color:Colors.grey[200]!,
-                                width: 1,
-                              )),
-                          enabled: true,
-                          enabledBorder: OutlineInputBorder( //Outline border type for TextFeild
-                              borderRadius: BorderRadius.all(Radius.circular(10)),
-                              borderSide: BorderSide(
-                                color:Colors.grey[200]!,
-                                width: 1,
-                              )),
-                          border: OutlineInputBorder( //Outlin
-                            // e border type for TextFeild
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                            borderSide: BorderSide(
-                              color:Colors.grey[200]!,
-                              width: 1,
-                            )),
-                          labelText: 'Receiver’s name*',
                         ),
-                      ),),
+                      ),
                       const SizedBox(height: 15),
                       SizedBox(
                         height: 55,
-                        child:
-                      TextField(
-                        controller: contatacNameController,
-                        keyboardType: TextInputType.name,
-
-                        decoration:  InputDecoration(
-                          suffixIcon: const Icon(
-                            Icons.cancel,
-                            color: Colors.grey,
-                            size: 24,
+                        child: TextField(
+                          controller: contatacNameController,
+                          keyboardType: TextInputType.name,
+                          decoration: InputDecoration(
+                       
+                            hintStyle: TextStyle(color: Colors.grey),
+                            labelStyle: TextStyle(color: Colors.grey),
+                            focusedBorder: OutlineInputBorder(
+                                //Outline border type for TextFeild
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10)),
+                                borderSide: BorderSide(
+                                  color: Colors.grey[200]!,
+                                  width: 1,
+                                )),
+                            enabled: true,
+                            enabledBorder: OutlineInputBorder(
+                                //Outline border type for TextFeild
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10)),
+                                borderSide: BorderSide(
+                                  color: Colors.grey[200]!,
+                                  width: 1,
+                                )),
+                            border: OutlineInputBorder(
+                                //Outlin
+                                // e border type for TextFeild
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10)),
+                                borderSide: BorderSide(
+                                  color: Colors.grey[200]!,
+                                  width: 1,
+                                )),
+                            labelText: 'Receiver’s contact*',
                           ),
-                          hintStyle: TextStyle(color: Colors.grey),
-                          labelStyle: TextStyle(color: Colors.grey),
-                          focusedBorder:  OutlineInputBorder( //Outline border type for TextFeild
-                              borderRadius: BorderRadius.all(Radius.circular(10)),
-                              borderSide: BorderSide(
-                                color:Colors.grey[200]!,
-                                width: 1,
-                              )),
-                          enabled: true,
-                          enabledBorder: OutlineInputBorder( //Outline border type for TextFeild
-                              borderRadius: BorderRadius.all(Radius.circular(10)),
-                              borderSide: BorderSide(
-                                color:Colors.grey[200]!,
-                                width: 1,
-                              )),
-                          border: OutlineInputBorder( //Outlin
-                            // e border type for TextFeild
-                              borderRadius: BorderRadius.all(Radius.circular(10)),
-                              borderSide: BorderSide(
-                                color:Colors.grey[200]!,
-                                width: 1,
-                              )),
-                          labelText: 'Receiver’s contact*',
                         ),
                       ),
-
-            ),
                       const SizedBox(height: 15),
                       SizedBox(
                         height: 55,
-                        child:        // Text input for Street Address
-                      TextField(
-                        controller: streetAddressController,
-                        keyboardType: TextInputType.name,
-
-                        decoration:  InputDecoration(
-                          suffixIcon: const Icon(
-                            Icons.cancel,
-                            color: Colors.grey,
-                            size: 24,
+                        child: // Text input for Street Address
+                            TextField(
+                          controller: streetAddressController,
+                          keyboardType: TextInputType.name,
+                          decoration: InputDecoration(
+                           
+                            hintStyle: TextStyle(color: Colors.grey),
+                            labelStyle: TextStyle(color: Colors.grey),
+                            focusedBorder: OutlineInputBorder(
+                                //Outline border type for TextFeild
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10)),
+                                borderSide: BorderSide(
+                                  color: Colors.grey[200]!,
+                                  width: 1,
+                                )),
+                            enabled: true,
+                            enabledBorder: OutlineInputBorder(
+                                //Outline border type for TextFeild
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10)),
+                                borderSide: BorderSide(
+                                  color: Colors.grey[200]!,
+                                  width: 1,
+                                )),
+                            border: OutlineInputBorder(
+                                //Outlin
+                                // e border type for TextFeild
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10)),
+                                borderSide: BorderSide(
+                                  color: Colors.grey[200]!,
+                                  width: 1,
+                                )),
+                            labelText: 'Complete Address*',
                           ),
-                          hintStyle: TextStyle(color: Colors.grey),
-                          labelStyle: TextStyle(color: Colors.grey),
-                          focusedBorder:  OutlineInputBorder( //Outline border type for TextFeild
-                              borderRadius: BorderRadius.all(Radius.circular(10)),
-                              borderSide: BorderSide(
-                                color:Colors.grey[200]!,
-                                width: 1,
-                              )),
-                          enabled: true,
-                          enabledBorder: OutlineInputBorder( //Outline border type for TextFeild
-                              borderRadius: BorderRadius.all(Radius.circular(10)),
-                              borderSide: BorderSide(
-                                color:Colors.grey[200]!,
-                                width: 1,
-                              )),
-                          border: OutlineInputBorder( //Outlin
-                            // e border type for TextFeild
-                              borderRadius: BorderRadius.all(Radius.circular(10)),
-                              borderSide: BorderSide(
-                                color:Colors.grey[200]!,
-                                width: 1,
-                              )),
-                          labelText: 'Complete Address*',
                         ),
                       ),
-            ),
                       const SizedBox(height: 15),
                       // Text input for Apt, Sut, etc (Optional)
                       SizedBox(
                         height: 55,
-                        child:
-                      TextField(
-                        controller: aptController,
-                        keyboardType: TextInputType.name,
-
-                        decoration:  InputDecoration(
-                          suffixIcon: const Icon(
-                            Icons.cancel,
-                            color: Colors.grey,
-                            size: 24,
+                        child: TextField(
+                          controller: aptController,
+                          keyboardType: TextInputType.name,
+                          decoration: InputDecoration(
+                       
+                            hintStyle: TextStyle(color: Colors.grey),
+                            labelStyle: TextStyle(color: Colors.grey),
+                            focusedBorder: OutlineInputBorder(
+                                //Outline border type for TextFeild
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10)),
+                                borderSide: BorderSide(
+                                  color: Colors.grey[200]!,
+                                  width: 1,
+                                )),
+                            enabled: true,
+                            enabledBorder: OutlineInputBorder(
+                                //Outline border type for TextFeild
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10)),
+                                borderSide: BorderSide(
+                                  color: Colors.grey[200]!,
+                                  width: 1,
+                                )),
+                            border: OutlineInputBorder(
+                                //Outlin
+                                // e border type for TextFeild
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10)),
+                                borderSide: BorderSide(
+                                  color: Colors.grey[200]!,
+                                  width: 1,
+                                )),
+                            labelText: 'Nearby landmark (optional)',
                           ),
-                          hintStyle: TextStyle(color: Colors.grey),
-                          labelStyle: TextStyle(color: Colors.grey),
-                          focusedBorder:  OutlineInputBorder( //Outline border type for TextFeild
-                              borderRadius: BorderRadius.all(Radius.circular(10)),
-                              borderSide: BorderSide(
-                                color:Colors.grey[200]!,
-                                width: 1,
-                              )),
-                          enabled: true,
-                          enabledBorder: OutlineInputBorder( //Outline border type for TextFeild
-                              borderRadius: BorderRadius.all(Radius.circular(10)),
-                              borderSide: BorderSide(
-                                color:Colors.grey[200]!,
-                                width: 1,
-                              )),
-                          border: OutlineInputBorder( //Outlin
-                            // e border type for TextFeild
-                              borderRadius: BorderRadius.all(Radius.circular(10)),
-                              borderSide: BorderSide(
-                                color:Colors.grey[200]!,
-                                width: 1,
-                              )),
-                          labelText: 'Nearby landmark (optional)',
                         ),
-                      ),
                       ),
                       const SizedBox(height: 15),
                       // Text input for City
 
                       SizedBox(
                         height: 55,
-                        child:
-                      TextField(
-                        controller: cityController,
-                        keyboardType: TextInputType.name,
-
-                        decoration:  InputDecoration(
-                          suffixIcon: const Icon(
-                            Icons.cancel,
-                            color: Colors.grey,
-                            size: 24,
+                        child: TextField(
+                          controller: cityController,
+                          keyboardType: TextInputType.name,
+                          decoration: InputDecoration(
+                    
+                            hintStyle: TextStyle(color: Colors.grey),
+                            labelStyle: TextStyle(color: Colors.grey),
+                            focusedBorder: OutlineInputBorder(
+                                //Outline border type for TextFeild
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10)),
+                                borderSide: BorderSide(
+                                  color: Colors.grey[200]!,
+                                  width: 1,
+                                )),
+                            enabled: true,
+                            enabledBorder: OutlineInputBorder(
+                                //Outline border type for TextFeild
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10)),
+                                borderSide: BorderSide(
+                                  color: Colors.grey[200]!,
+                                  width: 1,
+                                )),
+                            border: OutlineInputBorder(
+                                //Outlin
+                                // e border type for TextFeild
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10)),
+                                borderSide: BorderSide(
+                                  color: Colors.grey[200]!,
+                                  width: 1,
+                                )),
+                            labelText: 'City*',
                           ),
-                          hintStyle: TextStyle(color: Colors.grey),
-                          labelStyle: TextStyle(color: Colors.grey),
-                          focusedBorder:  OutlineInputBorder( //Outline border type for TextFeild
-                              borderRadius: BorderRadius.all(Radius.circular(10)),
-                              borderSide: BorderSide(
-                                color:Colors.grey[200]!,
-                                width: 1,
-                              )),
-                          enabled: true,
-                          enabledBorder: OutlineInputBorder( //Outline border type for TextFeild
-                              borderRadius: BorderRadius.all(Radius.circular(10)),
-                              borderSide: BorderSide(
-                                color:Colors.grey[200]!,
-                                width: 1,
-                              )),
-                          border: OutlineInputBorder( //Outlin
-                            // e border type for TextFeild
-                              borderRadius: BorderRadius.all(Radius.circular(10)),
-                              borderSide: BorderSide(
-                                color:Colors.grey[200]!,
-                                width: 1,
-                              )),
-                          labelText: 'City*',
                         ),
-                      ),
                       ),
 
                       const SizedBox(height: 15),
                       SizedBox(
                         height: 55,
-                        child:
-                      TextField(
-                        controller: countryController,
-                        keyboardType: TextInputType.name,
-
-                        decoration:  InputDecoration(
-                          suffixIcon: const Icon(
-                            Icons.cancel,
-                            color: Colors.grey,
-                            size: 24,
+                        child: TextField(
+                          controller: countryController,
+                          keyboardType: TextInputType.name,
+                          decoration: InputDecoration(
+                   
+                            hintStyle: TextStyle(color: Colors.grey),
+                            labelStyle: TextStyle(color: Colors.grey),
+                            focusedBorder: OutlineInputBorder(
+                                //Outline border type for TextFeild
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10)),
+                                borderSide: BorderSide(
+                                  color: Colors.grey[200]!,
+                                  width: 1,
+                                )),
+                            enabled: true,
+                            enabledBorder: OutlineInputBorder(
+                                //Outline border type for TextFeild
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10)),
+                                borderSide: BorderSide(
+                                  color: Colors.grey[200]!,
+                                  width: 1,
+                                )),
+                            border: OutlineInputBorder(
+                                //Outlin
+                                // e border type for TextFeild
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10)),
+                                borderSide: BorderSide(
+                                  color: Colors.grey[200]!,
+                                  width: 1,
+                                )),
+                            labelText: 'Country*',
                           ),
-                          hintStyle: TextStyle(color: Colors.grey),
-                          labelStyle: TextStyle(color: Colors.grey),
-                          focusedBorder:  OutlineInputBorder( //Outline border type for TextFeild
-                              borderRadius: BorderRadius.all(Radius.circular(10)),
-                              borderSide: BorderSide(
-                                color:Colors.grey[200]!,
-                                width: 1,
-                              )),
-                          enabled: true,
-                          enabledBorder: OutlineInputBorder( //Outline border type for TextFeild
-                              borderRadius: BorderRadius.all(Radius.circular(10)),
-                              borderSide: BorderSide(
-                                color:Colors.grey[200]!,
-                                width: 1,
-                              )),
-                          border: OutlineInputBorder( //Outlin
-                            // e border type for TextFeild
-                              borderRadius: BorderRadius.all(Radius.circular(10)),
-                              borderSide: BorderSide(
-                                color:Colors.grey[200]!,
-                                width: 1,
-                              )),
-                          labelText: 'Country*',
-
+                          enabled: false,
                         ),
-                        enabled: false,
-                      ),
                       ),
                       const SizedBox(height: 15),
                       // Text input for Zipcode
                       SizedBox(
                         height: 55,
-                        child:
-                      TextField(
-                        controller: zipcodeController,
-                        keyboardType: TextInputType.name,
-
-                        decoration:  InputDecoration(
-                          suffixIcon: const Icon(
-                            Icons.cancel,
-                            color: Colors.grey,
-                            size: 24,
+                        child: TextField(
+                          controller: zipcodeController,
+                          keyboardType: TextInputType.name,
+                          decoration: InputDecoration(
+                        
+                            hintStyle: TextStyle(color: Colors.grey),
+                            labelStyle: TextStyle(color: Colors.grey),
+                            focusedBorder: OutlineInputBorder(
+                                //Outline border type for TextFeild
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10)),
+                                borderSide: BorderSide(
+                                  color: Colors.grey[200]!,
+                                  width: 1,
+                                )),
+                            enabled: true,
+                            enabledBorder: OutlineInputBorder(
+                                //Outline border type for TextFeild
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10)),
+                                borderSide: BorderSide(
+                                  color: Colors.grey[200]!,
+                                  width: 1,
+                                )),
+                            border: OutlineInputBorder(
+                                //Outlin
+                                // e border type for TextFeild
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10)),
+                                borderSide: BorderSide(
+                                  color: Colors.grey[200]!,
+                                  width: 1,
+                                )),
+                            labelText: 'Zipcode*',
                           ),
-                          hintStyle: TextStyle(color: Colors.grey),
-                          labelStyle: TextStyle(color: Colors.grey),
-                          focusedBorder:  OutlineInputBorder( //Outline border type for TextFeild
-                              borderRadius: BorderRadius.all(Radius.circular(10)),
-                              borderSide: BorderSide(
-                                color:Colors.grey[200]!,
-                                width: 1,
-                              )),
-                          enabled: true,
-                          enabledBorder: OutlineInputBorder( //Outline border type for TextFeild
-                              borderRadius: BorderRadius.all(Radius.circular(10)),
-                              borderSide: BorderSide(
-                                color:Colors.grey[200]!,
-                                width: 1,
-                              )),
-                          border: OutlineInputBorder( //Outlin
-                            // e border type for TextFeild
-                              borderRadius: BorderRadius.all(Radius.circular(10)),
-                              borderSide: BorderSide(
-                                color:Colors.grey[200]!,
-                                width: 1,
-                              )),
-                          labelText: 'Zipcode*',
-
+                          enabled: false,
                         ),
-                        enabled: false,
-                      ),),
-
+                      ),
                     ],
                   ),
                   // Additional container for special anniversary

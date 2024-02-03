@@ -9,6 +9,9 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../core/utils/image_constant.dart';
+import '../../widgets/custom_image_view.dart';
+
 class Profile extends StatefulWidget {
   const Profile({super.key});
 
@@ -75,14 +78,14 @@ class _ProfileState extends State<Profile> {
                                       blurRadius: 10,
                                       spreadRadius: 1.5),
                                 ]),
-                            child: const Row(
+                            child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 //Image.asset("assets/moto.png"),
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    TextLato('Rock',
+                                    TextLato('Robot',
                                         fontWeight: FontWeight.bold,
                                         fontSize: 24,
                                         color: Colors.black),
@@ -93,8 +96,11 @@ class _ProfileState extends State<Profile> {
                                         fontWeight: FontWeight.w600),
                                   ],
                                 ),
-                                Icon(Icons.person,
-                                    color: Color(0xff109D10), size: 78)
+                                // Icon(Icons.person,
+                                //     color: Color(0xff109D10), size: 78),
+                                CustomImageView(
+                                  imagePath: ImageConstant.profileImage,
+                                )
                               ],
                             ),
                           ),

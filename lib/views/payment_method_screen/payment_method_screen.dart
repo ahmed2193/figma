@@ -2,6 +2,7 @@ import 'package:figma/core/app_export.dart';
 import 'package:figma/widgets/custom_elevated_button.dart';
 import 'package:figma/widgets/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 // ignore_for_file: must_be_immutable
 class PaymentMethodScreen extends StatelessWidget {
@@ -42,9 +43,7 @@ class PaymentMethodScreen extends StatelessWidget {
                                       height: 13.v,
                                       width: 135.h,
                                       margin: EdgeInsets.only(
-                                          left: 15.h,
-                                          top: 3.v,
-                                          bottom: 2.v),
+                                          left: 15.h, top: 3.v, bottom: 2.v),
                                       child: Stack(
                                           alignment: Alignment.centerRight,
                                           children: [
@@ -53,8 +52,7 @@ class PaymentMethodScreen extends StatelessWidget {
                                                     ImageConstant.imgName,
                                                 height: 13.v,
                                                 width: 135.h,
-                                                alignment:
-                                                    Alignment.center),
+                                                alignment: Alignment.center),
                                             CustomImageView(
                                                 imagePath: ImageConstant
                                                     .imgSettingsErrorcontainer12x9,
@@ -86,6 +84,7 @@ class PaymentMethodScreen extends StatelessWidget {
                       ]))))
         ])));
   }
+
   /// Section Widget
   Widget _buildSettingsColumn(BuildContext context) {
     return Align(
@@ -140,7 +139,11 @@ class PaymentMethodScreen extends StatelessWidget {
                                 ])),
                         Spacer(flex: 64),
                         CustomImageView(
-                            imagePath: ImageConstant.imgArrowRight,
+                             imagePath: ImageConstant.imgArrowRight,
+                            onTap: () {
+                              context.pop();
+                            },
+                          
                             height: 19.v,
                             width: 20.h,
                             margin: EdgeInsets.only(top: 11.v, bottom: 24.v))
@@ -184,7 +187,7 @@ class PaymentMethodScreen extends StatelessWidget {
   /// Section Widget
   Widget _buildSettingsStack(BuildContext context) {
     return SizedBox(
-        height: 240.v,
+        height: 260.v,
         width: 358.h,
         child: Stack(alignment: Alignment.center, children: [
           CustomImageView(
@@ -252,7 +255,10 @@ class PaymentMethodScreen extends StatelessWidget {
                                             top: 33.v, bottom: 5.v)),
                                     Spacer(flex: 57),
                                     CustomImageView(
-                                        imagePath: ImageConstant.imgArrowRight,
+                                         imagePath: ImageConstant.imgArrowRight,
+                            onTap: () {
+                              context.pop();
+                            },
                                         height: 19.v,
                                         width: 20.h,
                                         margin: EdgeInsets.only(

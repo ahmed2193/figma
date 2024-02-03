@@ -28,6 +28,7 @@ class _OrderState extends State<Order> {
                   AppBar(
                       centerTitle: true,
                       backgroundColor: Colors.white,
+                      leading: SizedBox(),
                       elevation: 0,
                       title: Text(
                         "Your Order",

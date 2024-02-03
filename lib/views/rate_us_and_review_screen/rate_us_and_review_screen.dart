@@ -219,6 +219,7 @@ class RateUsAndReviewScreen extends StatelessWidget {
               hintText: "Write Here",
               hintStyle: CustomTextStyles.bodySmallErrorContainer,
               textInputAction: TextInputAction.done,
+              fillColor: Colors.transparent,
               maxLines: 5,
             ),
           ),
